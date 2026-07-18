@@ -1,7 +1,7 @@
 manifestVersion: 1
 
 name: "@sntxrr/oci-instance"
-version: "2026.07.17.1"
+version: "2026.07.18.1"
 description: "Power-control an Oracle Cloud Infrastructure (OCI) compute instance — reboot (SOFTRESET/RESET), start, stop, and sync lifecycle state via the OCI Core API with RSA-SHA256 request signing."
 repository: "https://github.com/sntxrr/swamp-oci"
 

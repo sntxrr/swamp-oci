@@ -344,7 +344,7 @@ function toInstanceResource(
  */
 export const model = {
   type: "@sntxrr/oci-instance",
-  version: "2026.07.17.1",
+  version: "2026.07.18.1",
   globalArguments: GlobalArgsSchema,
   resources: {
     "instance": {
@@ -376,7 +376,7 @@ export const model = {
           action: args.action,
         });
         const result = await instanceAction(args.action, globalArgs, now);
-        const handle = await context.writeResource("action", "latest", {
+        const handle = await context.writeResource("action", "current", {
           instanceId: globalArgs.instanceId,
           action: args.action,
           lifecycleState: (result.lifecycleState as string) ?? "UNKNOWN",
@@ -403,7 +403,7 @@ export const model = {
           id: globalArgs.instanceId,
         });
         const result = await instanceAction("START", globalArgs, now);
-        const handle = await context.writeResource("action", "latest", {
+        const handle = await context.writeResource("action", "current", {
           instanceId: globalArgs.instanceId,
           action: "START",
           lifecycleState: (result.lifecycleState as string) ?? "UNKNOWN",
@@ -428,7 +428,7 @@ export const model = {
           action: args.action,
         });
         const result = await instanceAction(args.action, globalArgs, now);
-        const handle = await context.writeResource("action", "latest", {
+        const handle = await context.writeResource("action", "current", {
           instanceId: globalArgs.instanceId,
           action: args.action,
           lifecycleState: (result.lifecycleState as string) ?? "UNKNOWN",
@@ -452,7 +452,7 @@ export const model = {
         const instance = await getInstance(globalArgs, now);
         const handle = await context.writeResource(
           "instance",
-          "latest",
+          "current",
           toInstanceResource(instance, globalArgs, new Date().toISOString()),
         );
         logger.info("Instance {id} is {state}", {
