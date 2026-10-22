@@ -346,6 +346,18 @@ export const model = {
   type: "@sntxrr/oci-instance",
   version: "2026.07.18.1",
   globalArguments: GlobalArgsSchema,
+
+  // No-op baseline at the current version. It migrates nothing; it exists so
+  // an instance authored for an older typeVersion is stamped forward instead
+  // of stranded, and so the next version bump extends a chain rather than
+  // starting one. A real schema change adds its own entry after this one.
+  upgrades: [
+    {
+      toVersion: "2026.07.18.1",
+      description: "Baseline upgrade chain; migrates nothing.",
+      upgradeAttributes: (old: Record<string, unknown>) => old,
+    },
+  ],
   resources: {
     "instance": {
       description: "Snapshot of the OCI compute instance's state",
